@@ -1,0 +1,12 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+__pypackages__/
+.venv/
+.idea/
+.ruff_cache/
+poetry.lock
+
+guarda_backup.json
+guarda_backup.txt

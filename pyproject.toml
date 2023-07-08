@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "guarda-backup-decoder-py"
+version = "0.1.0"
+description = ""
+authors = []
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pycryptodome = "^3.18.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.0.277"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+select = ["F", "E", "I", "U", "N", "C", "B", "A", "T", "Q", "ANN", "RUF"]
+ignore = ["ANN101", "ANN102"]
+line-length = 120
