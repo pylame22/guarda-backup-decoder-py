@@ -8,5 +8,4 @@ __pypackages__/
 .ruff_cache/
 poetry.lock
 
-guarda_backup.json
 guarda_backup.txt

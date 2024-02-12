@@ -1,7 +1,7 @@
 import json
+import logging
 from base64 import b64decode
 from hashlib import md5, pbkdf2_hmac
-from typing import Any
 
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
@@ -10,11 +10,6 @@ from Crypto.Util.Padding import unpad
 def _get_backup() -> str:
     with open("guarda_backup.txt") as file:
         return file.read()
-
-
-def _save_json_backup(data_json: dict[str, Any]) -> None:
-    with open("guarda_backup.json", "w") as file:
-        json.dump(data_json, file, ensure_ascii=False, indent=2)
 
 
 class GuardaBackupDecrypt:
@@ -52,6 +47,7 @@ class GuardaBackupDecrypt:
 
 
 def main() -> None:
+    logging.basicConfig(level=logging.INFO)
     password = input("password: ")
     gbd = GuardaBackupDecrypt(password, _get_backup())
     try:
@@ -59,7 +55,7 @@ def main() -> None:
     except ValueError:
         raise Exception("Wrong password") from None
     data_json = json.loads(data)
-    _save_json_backup(data_json)
+    logging.info(json.dumps(data_json, indent=2))
 
 
 if __name__ == "__main__":
