@@ -1,6 +1,7 @@
 import json
 import logging
 from base64 import b64decode
+from getpass import getpass
 from hashlib import md5, pbkdf2_hmac
 
 from Crypto.Cipher import AES
@@ -48,7 +49,7 @@ class GuardaBackupDecrypt:
 
 def main() -> None:
     logging.basicConfig(level=logging.INFO)
-    password = input("password: ")
+    password = getpass()
     gbd = GuardaBackupDecrypt(password, _get_backup())
     try:
         data = gbd.decrypt()
